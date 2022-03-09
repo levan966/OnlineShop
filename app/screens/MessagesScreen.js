@@ -4,12 +4,13 @@ import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
 import ListItemSeparator from "../components/ListItemSeparator";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
-
+const lala =
+  "Эффективные алгоритмы антиплагиата онлайн делают проверку глубокой и качественной.";
 const initialMessages = [
   {
     id: 1,
     title: "T1",
-    description: "D1",
+    description: lala,
     image: require("../assets/mosh.jpg"),
   },
   {
@@ -53,7 +54,8 @@ const MessagesScreen = (props) => {
         renderItem={({ item }) => (
           <ListItem
             onPress={() => console.log("Message")}
-            title={item.title}
+            // title={item.title}
+            title={lala}
             subTitle={item.description}
             image={item.image}
             renderRightActions={() => (
