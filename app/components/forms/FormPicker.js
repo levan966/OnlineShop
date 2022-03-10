@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { useFormikContext } from "formik";
 import AppPicker from "../AppPicker";
 import ErrorMessage from "./ErrorMessage";
 
-const AppFormPicker = ({
+const FormPicker = ({
   items,
   name,
   numberOfColumns = 1,
@@ -29,6 +29,6 @@ const AppFormPicker = ({
   );
 };
 
-export default AppFormPicker;
+export default FormPicker;
 
 const styles = StyleSheet.create({});

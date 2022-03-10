@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { StyleSheet } from "react-native";
 
 import AppText from "./app/components/AppText";
 import Card from "./app/components/Card";
@@ -15,21 +14,16 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
-import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 export default function App() {
   return <ListingEditScreen />;
-  // return <MessagesScreen />;
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: "#f8f4f4",
-    // paddingTop: 100,
-    // padding: 20,
+    flex: 1,
   },
 });

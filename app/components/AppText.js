@@ -4,7 +4,11 @@ import defaultStyles from "../config/style";
 
 function AppText({ children, style, ...otherProps }) {
   return (
-    <Text style={[defaultStyles.text, style]} {...otherProps}>
+    <Text
+      style={[defaultStyles.text, style]}
+      // adjustsFontSizeToFit
+      {...otherProps}
+    >
       {children}
     </Text>
   );
