@@ -18,9 +18,10 @@ import PickerItem from "./PickerItem";
 const AppPicker = ({
   icon,
   items,
-  selectedItem,
-  placeholder,
   onSelectItem,
+  placeholder,
+  selectedItem,
+  width = "100%",
   ...otherProps
 }) => {
   console.log(items);
@@ -28,7 +29,7 @@ const AppPicker = ({
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(!modalVisible)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -82,7 +83,7 @@ export default AppPicker;
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    // width: "10%",
     flexDirection: "row",
     alignItems: "center",
     padding: 15,

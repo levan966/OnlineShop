@@ -40,8 +40,14 @@ const ListingEditScreen = (props) => {
           maxLength={8}
           name="price"
           placeholder="Price"
+          width="50%"
         />
-        <Picker items={categories} name="Category" placeholder="Category" />
+        <Picker
+          items={categories}
+          name="Category"
+          placeholder="Category"
+          width="50%"
+        />
         <FormField
           maxLength={255}
           multiline

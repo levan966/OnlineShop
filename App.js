@@ -21,13 +21,13 @@ import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 export default function App() {
-  // return <LoginScreen  />
-  return <MessagesScreen />;
+  return <ListingEditScreen />;
+  // return <MessagesScreen />;
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     // backgroundColor: "#f8f4f4",
     // paddingTop: 100,
     // padding: 20,
