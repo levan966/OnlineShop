@@ -19,12 +19,13 @@ const AppPicker = ({
   icon,
   items,
   onSelectItem,
+  PickerItemComponent = PickerItem,
+  numberOfColumns,
   placeholder,
   selectedItem,
   width = "100%",
   ...otherProps
 }) => {
-  console.log(items);
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -63,8 +64,10 @@ const AppPicker = ({
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
+            numColumns={numberOfColumns}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
+                item={item}
                 label={item.label}
                 onPress={() => {
                   onSelectItem(item);
@@ -83,7 +86,6 @@ export default AppPicker;
 
 const styles = StyleSheet.create({
   container: {
-    // width: "10%",
     flexDirection: "row",
     alignItems: "center",
     padding: 15,
