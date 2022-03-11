@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Button, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 // import * as Permissions from "expo-permissions";
-
 import AppText from "./app/components/AppText";
 import Card from "./app/components/Card";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -17,24 +16,20 @@ import ListingsScreen from "./app/screens/ListingsScreen";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ImageInput from "./app/components/ImageInput";
 
 export default function App() {
   const [imageUri, setImageUri] = useState();
   const requestPermission = async () => {
     const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (!granted) alert("Not granted");
-    console.log(granted);
   };
-
   const selectImage = async () => {
     try {
       const { cancelled, uri } = await ImagePicker.launchImageLibraryAsync();
       if (!cancelled) setImageUri(uri);
-    } catch (error) {
-      console.log("Error:", error);
-    }
+    } catch (error) {}
   };
-
   useEffect(() => {
     requestPermission();
   }, []);
@@ -43,6 +38,7 @@ export default function App() {
     <Screen>
       <Button title="Select Image" onPress={selectImage} />
       <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+      <ImageInput imageUri={imageUri} />
     </Screen>
   );
 }
