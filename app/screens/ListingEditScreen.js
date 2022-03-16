@@ -1,20 +1,25 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-import Screen from "../components/Screen";
+import useLocation from "../hooks/useLocation";
 import {
   Form,
   FormField as FormField,
   FormPicker as Picker,
   SubmitButton,
 } from "../components/forms";
+import FormImagePicker from "../components/forms/FormImagePicker";
+import Screen from "../components/Screen";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required().min(1).label("TiTle"),
-  price: Yup.string().required().min(1).max(10000).label("TiTle"),
+  title: Yup.string().required().min(1).label("Title"),
+  price: Yup.string().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
-  category: Yup.string().required().nullable().label("Category"),
+  category: Yup.object().required().nullable().label("Category"),
+  images: Yup.array()
+    .min(1, "Please select at list one image.")
+    .label("Images"), //Images field is required
 });
 
 const categories = [
@@ -73,9 +78,10 @@ const categories = [
     value: 9,
   },
 ];
-console.log(categories.length);
 
 const ListingEditScreen = (props) => {
+  const location = useLocation();
+
   return (
     <Screen style={styles.container}>
       <Form
@@ -84,9 +90,12 @@ const ListingEditScreen = (props) => {
           price: "",
           description: "",
           category: null,
+          images: [],
         }}
-        onSubmit={(value) => console.log(value)}
+        onSubmit={(values) => console.log(location)}
+        validationSchema={validationSchema}
       >
+        <FormImagePicker name="images" />
         <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keyboardType="numeric"
@@ -97,9 +106,9 @@ const ListingEditScreen = (props) => {
         />
         <Picker
           items={categories}
-          name="Category"
-          //   numberOfColumns={3}
-          //   PickerItemComponent={CategoryPickerItem}
+          name="category"
+          numberOfColumns={3}
+          PickerItemComponent={CategoryPickerItem}
           placeholder="Category"
           width="50%"
         />
@@ -116,10 +125,10 @@ const ListingEditScreen = (props) => {
   );
 };
 
-export default ListingEditScreen;
-
 const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
 });
+
+export default ListingEditScreen;

@@ -17,28 +17,12 @@ import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!granted) alert("Not granted");
-  };
-  const selectImage = async () => {
-    try {
-      const { cancelled, uri } = await ImagePicker.launchImageLibraryAsync();
-      if (!cancelled) setImageUri(uri);
-    } catch (error) {}
-  };
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
   return (
     <Screen>
-      <Button title="Select Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
-      <ImageInput imageUri={imageUri} />
+      <ListingEditScreen />
     </Screen>
   );
 }
