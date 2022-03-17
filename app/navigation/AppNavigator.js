@@ -1,5 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import routes from "./routes";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
@@ -35,7 +36,7 @@ const AppNavigator = () => {
         options={({ navigation, route }) => ({
           tabBarButton: () => (
             <NewLIstingButton
-              onPress={() => navigation.navigate("ListingEdit")}
+              onPress={() => navigation.navigate(routes.LISTING_EDIT)}
             />
           ),
         })}

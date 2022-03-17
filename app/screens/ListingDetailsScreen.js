@@ -3,11 +3,9 @@ import React from "react";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
 import { ListItem } from "../components/lists";
-import { useNavigation, useRoute } from "@react-navigation/native";
 
-const ListingDetailsScreen = () => {
-  const { params } = useRoute();
-  console.log(params);
+const ListingDetailsScreen = ({ route }) => {
+  const { params } = route;
   return (
     <View>
       <Image style={styles.image} source={params.image} />
