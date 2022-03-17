@@ -4,7 +4,7 @@ import Icon from "../components/Icon";
 import { ListItem } from "../components/lists";
 import { ListItemSeparator } from "../components/lists";
 import Screen from "../components/Screen";
-import colors from "../config/colors";
+import colors from "config/colors";
 
 const menuItem = [
   {
@@ -20,16 +20,17 @@ const menuItem = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen: "Messages",
   },
 ];
 
-const AccountScreen = (props) => {
+const AccountScreen = ({ navigation }) => {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
           image={require("../assets/mosh.jpg")}
-          title="tralala"
+          title="Mosh"
           subTitle={"pro"}
         />
       </View>
@@ -47,6 +48,7 @@ const AccountScreen = (props) => {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />

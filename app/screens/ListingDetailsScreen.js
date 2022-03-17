@@ -3,14 +3,17 @@ import React from "react";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
 import { ListItem } from "../components/lists";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-const ListingDetailsScreen = (props) => {
+const ListingDetailsScreen = () => {
+  const { params } = useRoute();
+  console.log(params);
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+      <Image style={styles.image} source={params.image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red Jacket</AppText>
-        <AppText style={styles.price}>$100</AppText>
+        <AppText style={styles.title}>{params.title}</AppText>
+        <AppText style={styles.price}>${params.price}</AppText>
         <View style={styles.userContainer}>
           <ListItem
             image={require("../assets/mosh.jpg")}

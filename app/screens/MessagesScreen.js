@@ -39,7 +39,7 @@ const initialMessages = [
   },
 ];
 
-const MessagesScreen = (props) => {
+const MessagesScreen = ({ onPress }) => {
   const [refreshing, setRefreshing] = useState(false);
   const [messages, setMessages] = useState(initialMessages);
   const handleDelete = (message) => {
