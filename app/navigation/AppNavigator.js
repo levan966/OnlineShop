@@ -5,6 +5,7 @@ import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "config/colors";
+import NewLIstingButton from "./NewLIstingButton";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,15 +32,13 @@ const AppNavigator = () => {
       <Tab.Screen
         name="ListingEdit"
         component={ListingEditScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="plus-circle"
-              color={color}
-              size={size}
+        options={({ navigation, route }) => ({
+          tabBarButton: () => (
+            <NewLIstingButton
+              onPress={() => navigation.navigate("ListingEdit")}
             />
           ),
-        }}
+        })}
       />
       <Tab.Screen
         name="Account"
