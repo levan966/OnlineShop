@@ -30,7 +30,6 @@ const AccountScreen = ({ navigation }) => {
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          // image={require("../assets/mosh.jpg")}
           image={require("../assets/mosh.jpg")}
           title="Mosh"
           subTitle={"pro"}

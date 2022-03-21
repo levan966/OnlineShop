@@ -16,9 +16,7 @@ const AppNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarLabel: () => {
-          return null;
-        },
+        tabBarShowLabel: false,
       }}
     >
       <Tab.Screen

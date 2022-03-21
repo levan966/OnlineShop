@@ -1,29 +1,35 @@
-import { StyleSheet, FlatList } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, FlatList, Text } from "react-native";
 import routes from "../navigation/routes";
+import listingsApi from "../api/listings";
 import Screen from "../components/Screen";
 import Card from "../components/Card";
 import colors from "../config/colors";
-import { useNavigation } from "@react-navigation/native";
+import AppButton from "../components/AppButton";
 
-const listings = [
-  {
-    id: 1,
-    title: "Red Jacket",
-    price: 100,
-    // image: require("../assets/jacket.jpg"),
-    image: require("../assets/jacket.jpg"),
-  },
-  {
-    id: 2,
-    title: "Couch CCCCCC",
-    price: 1000,
-    image: require("../assets/couch.jpg"),
-  },
-];
 const ListingsScreen = ({ navigation }) => {
+  const [listings, setListings] = useState([]);
+  const [error, setError] = useState(false);
+
+  const loadListings = async () => {
+    const response = await listingsApi();
+    if (!response.ok) return setError(true);
+    setError(false);
+    setListings(response.data);
+  };
+
+  useEffect(() => {
+    loadListings();
+  }, []);
+
   return (
     <Screen style={styles.screen}>
+      {error && (
+        <>
+          <Text>Couldn't retrieve the listings.</Text>
+          <AppButton title="Try again" onPress={loadListings} />
+        </>
+      )}
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -31,12 +37,11 @@ const ListingsScreen = ({ navigation }) => {
           <Card
             title={item.title}
             subTitle={`$ ${item.price}`}
-            image={item.image}
+            imageUrl={item.images[0].url}
             onPress={() =>
               navigation.navigate(routes.LISTING_DETAILS, {
+                image: item.images[0].url,
                 title: item.title,
-                image: item.image,
-                id: item.id,
                 price: item.price,
               })
             }
