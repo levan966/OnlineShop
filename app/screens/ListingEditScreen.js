@@ -8,6 +8,7 @@ import {
   FormPicker as Picker,
   SubmitButton,
 } from "../components/forms";
+import listingsApi from "../api/listings";
 import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
 import CategoryPickerItem from "../components/CategoryPickerItem";
@@ -81,6 +82,11 @@ const categories = [
 
 const ListingEditScreen = (props) => {
   const location = useLocation();
+  const handleSubmit = async (listing) => {
+    const result = await listingsApi.addListing({ ...listing, location });
+    if (!result.ok) return alert("Could not save the listing");
+    alert("Succsess");
+  };
 
   return (
     <Screen style={styles.container}>
@@ -92,7 +98,7 @@ const ListingEditScreen = (props) => {
           category: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(location)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />

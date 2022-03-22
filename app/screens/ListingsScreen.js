@@ -15,7 +15,7 @@ const ListingsScreen = ({ navigation }) => {
     error,
     loading,
     request: loadListings,
-  } = useApi(listingsApi);
+  } = useApi(listingsApi.getListings);
 
   useEffect(() => {
     loadListings();
