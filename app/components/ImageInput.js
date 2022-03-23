@@ -37,7 +37,9 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
         quality: 0.5,
       });
       if (!cancelled) onChangeImage(uri);
-    } catch (error) {}
+    } catch (error) {
+      console.log("Error" + error);
+    }
   };
 
   return (

@@ -3,7 +3,7 @@ import clientApi from "./client";
 const endpoint = "/listings";
 const getListings = () => clientApi.get(endpoint);
 
-const addListing = (listing) => {
+const addListing = (listing, onUpLoadProgress) => {
   const data = new FormData();
   data.append("title", listing.title);
   data.append("price", listing.price);
@@ -21,7 +21,11 @@ const addListing = (listing) => {
   if (listing.location)
     data.append("location", JSON.stringify(listing.location));
 
-  return clientApi.post(endpoint, data);
+  return clientApi.post(endpoint, data, {
+    onUploadProgress: (progress) =>
+      onUpLoadProgress(progress.loaded / progress.total),
+    // console.log(progress.loaded / progress.total),
+  });
 };
 
 export default {

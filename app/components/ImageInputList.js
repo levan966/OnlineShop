@@ -10,7 +10,7 @@ const ImageInputList = ({ imageUris = [], onRemoveImage, onAddImage }) => {
         ref={scrollView}
         horizontal
         onContentSizeChange={() => scrollView.current.scrollToEnd()}
-        showsHorizontalScrollIndicator={false}
+        // showsHorizontalScrollIndicator={false}
       >
         <View style={styles.container}>
           {imageUris.map((uri) => (

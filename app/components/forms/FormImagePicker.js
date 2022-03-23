@@ -21,8 +21,8 @@ const FormImagePicker = ({ name }) => {
     <>
       <ImageInputList
         imageUris={imageUris}
-        onRemoveImage={handleRemove}
         onAddImage={handleAdd}
+        onRemoveImage={handleRemove}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>

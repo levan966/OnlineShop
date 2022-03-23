@@ -9,7 +9,7 @@ const ActivitiIndicator = ({ visible = false }) => {
       <LottieView
         autoPlay
         loop
-        source={require("../assets/animations/lf30_editor_njoy65gd.json")}
+        source={require("../assets/animations/lf30_editor_qcmcwsnd.json")}
       />
     </Screen>
   );
