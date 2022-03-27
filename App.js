@@ -3,16 +3,15 @@ import { StyleSheet } from "react-native";
 import AppNavigator from "./app/navigation/AppNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import navigaitonTheme from "./app/navigation/navigaitonTheme";
-import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import OfflineNotice from "./app/components/OfflineNotice";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 export default function App() {
   return (
     <>
       <OfflineNotice />
       <NavigationContainer theme={navigaitonTheme}>
-        <AppNavigator />
+        <AuthNavigator />
       </NavigationContainer>
     </>
   );
