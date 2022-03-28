@@ -9,6 +9,7 @@ import {
   SubmitButton,
 } from "../components/forms";
 import authApi from "../api/auth";
+import jwtDecode from "jwt-decode";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -20,11 +21,10 @@ const LoginScreen = (props) => {
 
   const handleSubmit = async ({ email, password }) => {
     const result = await authApi.login(email, password);
-    if (!result.ok) {
-      return setLoginFailed(true);
-    }
+    if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
-    return console.log(result.data);
+    const user = jwtDecode(result.data);
+    console.log(user);
   };
 
   return (
