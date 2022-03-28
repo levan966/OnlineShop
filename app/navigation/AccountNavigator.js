@@ -9,7 +9,7 @@ const AccountNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Account" component={AccountScreen} />
+      <Stack.Screen name="AccountTab" component={AccountScreen} />
       <Stack.Screen name="Messages" component={MessagesScreen} />
     </Stack.Navigator>
   );
