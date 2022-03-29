@@ -31,8 +31,8 @@ const AccountScreen = ({ navigation }) => {
   const { user, setUser } = useContext(AuthContext);
 
   const handleLogOut = () => {
-    setUser();
-    setUser(authStorage.removeToken());
+    setUser(null);
+    authStorage.removeToken();
   };
   return (
     <Screen style={styles.screen}>
