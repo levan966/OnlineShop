@@ -12,7 +12,6 @@ import AppLoading from "expo-app-loading";
 export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
-  console.log(user);
 
   const restoreUser = async () => {
     const user = await authStorage.getUser();
